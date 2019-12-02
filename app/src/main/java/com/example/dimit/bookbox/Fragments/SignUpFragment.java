@@ -10,14 +10,11 @@ import android.view.ViewGroup;
 import com.example.dimit.bookbox.R;
 
 
-public class HomeFragment extends Fragment {
-
+public class SignUpFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView= inflater.inflate(R.layout.fragment_home, container, false);
+        View rootView= inflater.inflate(R.layout.fragment_sign_up, container, false);
         return rootView;
     }
-
-
 }

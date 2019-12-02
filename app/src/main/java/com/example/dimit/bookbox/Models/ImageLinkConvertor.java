@@ -3,7 +3,7 @@ package com.example.dimit.bookbox.Models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-class ImageLinkConvertor {
+public class ImageLinkConvertor {
     @SerializedName("smallThumbnail")
     @Expose
     private String smallThumbnail;

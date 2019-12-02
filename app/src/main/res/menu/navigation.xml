@@ -12,9 +12,9 @@
         android:title="Books" />
 
     <item
-        android:id="@+id/navigation_authors"
-        android:icon="@drawable/ic_group_black_24dp"
-        android:title="Authors" />
+        android:id="@+id/navigation_forum"
+        android:icon="@drawable/ic_forum_black_24dp"
+        android:title="Forum" />
     <item
         android:id="@+id/navigation_account"
         android:icon="@drawable/ic_account_circle_black_24dp"

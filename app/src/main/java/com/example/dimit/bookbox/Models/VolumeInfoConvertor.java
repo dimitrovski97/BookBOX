@@ -3,16 +3,27 @@ package com.example.dimit.bookbox.Models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-class VolumeInfoConvertor {
+import java.util.List;
+
+public class VolumeInfoConvertor {
     @SerializedName("title")
     @Expose
     private String title;
     @SerializedName("subtitle")
     @Expose
     private String subtitle;
+
+    public List<String> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(List<String> authors) {
+        this.authors = authors;
+    }
+
     @SerializedName("authors")
     @Expose
-    private AuthorsConvertor authors;
+    private List<String> authors;
     @SerializedName("publisher")
     @Expose
     private String publisher;
@@ -43,14 +54,6 @@ class VolumeInfoConvertor {
 
     public void setSubtitle(String subtitle) {
         this.subtitle = subtitle;
-    }
-
-    public AuthorsConvertor getAuthors() {
-        return authors;
-    }
-
-    public void setAuthors(AuthorsConvertor authors) {
-        this.authors = authors;
     }
 
     public String getPublisher() {

@@ -5,11 +5,13 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.dimit.bookbox.Fragments.AuthorsFragment;
 import com.example.dimit.bookbox.Fragments.BooksFragment;
+import com.example.dimit.bookbox.Fragments.ForumFragment;
 import com.example.dimit.bookbox.Fragments.HomeFragment;
 import com.example.dimit.bookbox.Fragments.LoginFragment;
 import com.example.dimit.bookbox.Models.Book;
@@ -22,6 +24,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
+
+    private android.support.v7.widget.SearchView searchView= null;
 
 
 
@@ -38,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_books:
                     selectedFragment=new BooksFragment();
                     break;
-                case R.id.navigation_authors:
-                    selectedFragment=new AuthorsFragment();
+                case R.id.navigation_forum:
+                    selectedFragment=new ForumFragment();
                     break;
                 case R.id.navigation_account:
                     selectedFragment=new LoginFragment();
@@ -59,8 +63,36 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contanier, new HomeFragment()).commit();
-        printItems();
+
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.options_menu, menu);
+        searchView = (android.support.v7.widget.SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setOnQueryTextListener(new android.support.v7.widget.SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                Bundle bundle = new Bundle();
+                bundle.putString("info", s);
+                BooksFragment booksFragment = new BooksFragment();
+                booksFragment.setArguments(bundle);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contanier, booksFragment).commit();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
+
+
+        return true;
+    }
+
+
     public void printItems(){
         BookApiRequest service = BookApiClient.getRetrofit().create(BookApiRequest.class);
         service.getAllBooks("Da Vinci").enqueue(new Callback<BookResponse>() {
