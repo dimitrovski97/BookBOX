@@ -18,6 +18,8 @@ import com.example.dimit.bookbox.Models.Book;
 import com.example.dimit.bookbox.Models.BookApiClient;
 import com.example.dimit.bookbox.Models.BookApiRequest;
 import com.example.dimit.bookbox.Models.BookResponse;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,7 +28,8 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private android.support.v7.widget.SearchView searchView= null;
-
+    private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -59,11 +62,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        
+        //Firebase
+        mAuth = FirebaseAuth.getInstance();
+        
+        
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contanier, new HomeFragment()).commit();
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        currentUser = mAuth.getCurrentUser();
+        if (currentUser == null){
+            Toast.makeText(this, "Ne sum najaven", Toast.LENGTH_SHORT).show();
+        }else{
+//        updateUI(currentUser);
+        }
     }
 
     @Override
@@ -113,4 +131,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public FirebaseUser getCurrentUser() {
+        return currentUser;
+    }
+
+    public FirebaseAuth getmAuth() {
+        return mAuth;
+    }
 }

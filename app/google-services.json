@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "823099804045",
+    "firebase_url": "https://bookbox-30e26.firebaseio.com",
+    "project_id": "bookbox-30e26",
+    "storage_bucket": "bookbox-30e26.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823099804045:android:c4408c177f7ed52d3815c4",
+        "android_client_info": {
+          "package_name": "com.example.dimit.bookbox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "823099804045-hfef9ovgp766kmpr6h2hjpvfem6qhkvm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkxsbN9TYwyrsx1yGTaRpj8tD4P2IoEAc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "823099804045-hfef9ovgp766kmpr6h2hjpvfem6qhkvm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

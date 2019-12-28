@@ -18,7 +18,7 @@ public class BookActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_book);
+        setContentView(R.layout.content_book);
 
         Intent intent = getIntent();
         String title = intent.getStringExtra("Title");
@@ -29,26 +29,24 @@ public class BookActivity extends AppCompatActivity {
         String imageUrl = intent.getStringExtra("imageUrl");
 
 
-
-
-        bindItems(title,authors,date,description,imageUrl);
+        bindItems(title, authors, date, description, imageUrl);
 
 
     }
 
     private void bindItems(String title, String authors, String date, String description, String imageUrl) {
-        this.textTitle = (TextView)findViewById(R.id.textTitle);
-        this.textAuthors = (TextView)findViewById(R.id.textAuthors);
-        this.textDate = (TextView)findViewById(R.id.textDate);
-        this.textDescription = (TextView)findViewById(R.id.textDescription);
-        this.imageView = (ImageView)findViewById(R.id.imageView1);
+        this.textTitle = (TextView) findViewById(R.id.textTitle);
+        this.textAuthors = (TextView) findViewById(R.id.textAuthors);
+        this.textDate = (TextView) findViewById(R.id.textDate);
+        this.textDescription = (TextView) findViewById(R.id.textDescription);
+        this.imageView = (ImageView) findViewById(R.id.imageView1);
         Glide.with(imageView.getContext())
                 .load(imageUrl)
                 .into(imageView);
-        this.textTitle.setText(String.format("%s",title));
-        this.textAuthors.setText(String.format("%s",authors));
-        this.textDate.setText(String.format("%s",date));
-        this.textDescription.setText(String.format("%s",description));
+        this.textTitle.setText(String.format("%s", title));
+        this.textAuthors.setText(String.format("%s", authors));
+        this.textDate.setText(String.format("%s", date));
+        this.textDescription.setText(String.format("%s", description));
 
     }
 
